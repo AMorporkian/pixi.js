@@ -1,4 +1,3 @@
-
 var mapWebGLBlendModesToPixi = require('./utils/mapWebGLBlendModesToPixi');
 
 /**
@@ -50,7 +49,8 @@ var WebGLState = function(gl)
 
 	this.maxAttribs = gl.getParameter(gl.MAX_VERTEX_ATTRIBS);
 
-    this.attribState = {tempAttribState: new Array(this.maxAttribs), attribState: new Array(this.maxAttribs)};
+	this.attribState = {tempAttribState:new Array(this.maxAttribs),
+                        attribState:new Array(this.maxAttribs)};
 
 
 
@@ -234,9 +234,9 @@ WebGLState.prototype.resetAttributes = function()
 
 	// im going to assume one is always active for performance reasons.
 	for (var i = 1; i < this.maxAttribs; i++)
-  {
+  	{
 		gl.disableVertexAttribArray(i);
-  }
+  	}
 };
 
 //used
@@ -259,6 +259,10 @@ WebGLState.prototype.resetToDefault = function()
 	{
 		this.activeState[i] = 2;
 	}
+
+	var gl = this.gl;
+	gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+
 
 	this.setState(this.defaultState);
 };

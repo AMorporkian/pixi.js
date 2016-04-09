@@ -33,7 +33,7 @@ var BaseTexture = require('./BaseTexture'),
  *
  * var baseRenderTexture = new PIXI.BaserenderTexture(100, 100);
  * var renderTexture = new PIXI.RenderTexture(baseRenderTexture);
- * 
+ *
  * renderer.render(doc, renderTexture);  // Renders to center of RenderTexture
  * ```
  *

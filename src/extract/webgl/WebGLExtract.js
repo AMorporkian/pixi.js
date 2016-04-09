@@ -1,5 +1,5 @@
-var core = require('../../core');
-var tempRect = new core.Rectangle();
+var core = require('../../core'),
+    tempRect = new core.Rectangle();
 
 /**
  * The extract manager provides functionality to export content from the renderers
@@ -134,7 +134,7 @@ Extract.prototype.pixels = function ( renderTexture )
     var textureBuffer;
     var resolution;
     var frame;
-    
+
     if(renderTexture)
     {
         textureBuffer = renderTexture.baseTexture._glRenderTargets[this.renderer.CONTEXT_UID];
@@ -155,8 +155,6 @@ Extract.prototype.pixels = function ( renderTexture )
     var width = frame.width * resolution;
     var height = frame.height * resolution;
 
-    var gl = this.renderer.gl;
-
     var webGLPixels = new Uint8Array(4 * width * height);
 
     if(textureBuffer)
@@ -164,7 +162,7 @@ Extract.prototype.pixels = function ( renderTexture )
         // bind the buffer
         renderer.bindRenderTarget(textureBuffer);
         // read pixels to the array
-        gl = renderer.gl;
+        var gl = renderer.gl;
         gl.readPixels(frame.x * resolution, frame.y * resolution, width, height, gl.RGBA, gl.UNSIGNED_BYTE, webGLPixels);
     }
 

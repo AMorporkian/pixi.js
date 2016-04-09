@@ -438,8 +438,8 @@ Container.prototype.getBounds = function ()
 
         if (!childVisible)
         {
-            this._currentBounds = math.Rectangle.EMPTY;
-            return this._currentBounds;
+             this._currentBounds = math.Rectangle.EMPTY;
+             return this._currentBounds;
         }
 
         var bounds = this._bounds;
